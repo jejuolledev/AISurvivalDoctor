@@ -184,10 +184,111 @@ h2 { font-size:clamp(30px, 3.5vw, 42px); font-weight:900; line-height:1.3; margi
 @keyframes fadeOut { 0%{opacity:1} 70%{opacity:1} 100%{opacity:0} }
 .progress { position:fixed; bottom:0; left:0; height:3px; background:linear-gradient(90deg, #E85D2F, #065A82); transition:width 0.4s ease; z-index:100; }
 
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  html, body { overflow-y:auto; overflow-x:hidden; }
+  .slide { position:relative; width:100%; min-height:100vh; height:auto; padding:24px 16px 80px; opacity:1; transform:none; pointer-events:auto; display:none; flex-direction:column; justify-content:flex-start; align-items:center; }
+  .slide.active { display:flex; }
+  .slide.prev { display:none; }
+  .slide-num { top:12px; right:16px; font-size:12px; }
+  .slide-badge { font-size:13px; padding:6px 16px; }
+  h1 { font-size:28px !important; }
+  h2 { font-size:22px !important; }
+  .subtitle { font-size:15px !important; }
+
+  /* Grids → stack */
+  .stat-grid { grid-template-columns:repeat(2, 1fr); gap:12px; }
+  .stat-num { font-size:30px; }
+  .stat-label { font-size:13px; }
+  .stat-sub { font-size:11px; }
+  .stat-card { padding:16px 12px; }
+
+  .principle-grid { grid-template-columns:repeat(2, 1fr); gap:12px; }
+  .principle-icon { font-size:28px; }
+  .principle-card h3 { font-size:14px; }
+  .principle-card p { font-size:12px; }
+  .principle-card { padding:16px 12px; }
+
+  .monitor-grid { grid-template-columns:repeat(2, 1fr); gap:10px; }
+  .monitor-card { padding:14px 10px; }
+  .monitor-card .m-icon { font-size:24px; margin-bottom:6px; }
+  .monitor-card h4 { font-size:13px; }
+  .monitor-card p { font-size:12px; }
+
+  .diag-layout { grid-template-columns:1fr; gap:16px; }
+  .query-text h4 { font-size:14px; }
+  .query-text p { font-size:12px; }
+  .result-card { padding:16px; }
+  .result-row { font-size:13px; gap:8px; }
+  .result-label { min-width:80px; font-size:13px; }
+  .result-summary { font-size:13px; }
+
+  .alert-box { grid-template-columns:1fr; gap:12px; }
+  .alert-warning { padding:16px; }
+  .alert-warning h4 { font-size:14px; }
+  .alert-warning p { font-size:13px; }
+  .alert-solution { padding:16px; }
+  .alert-solution h4 { font-size:14px; }
+  .alert-solution li { font-size:13px; }
+
+  /* Tables → scrollable */
+  .data-table, .comp-table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; font-size:13px; }
+  .data-table th, .data-table td { padding:10px 12px; font-size:13px; white-space:nowrap; }
+  .comp-table th, .comp-table td { padding:10px 12px; font-size:13px; }
+
+  .callout { font-size:14px; padding:14px 16px; }
+
+  .roadmap { grid-template-columns:1fr; gap:16px; }
+  .roadmap::before { display:none; }
+  .phase-header h3 { font-size:16px; }
+  .phase-body li { font-size:13px; }
+
+  .effect-grid { grid-template-columns:1fr; gap:14px; }
+  .effect-header { font-size:15px; padding:12px; }
+  .effect-item p { font-size:13px; }
+  .effect-num { font-size:20px; }
+
+  .flow-row { flex-wrap:wrap; gap:6px; }
+  .flow-label { font-size:12px; padding:6px 10px; min-width:70px; }
+  .flow-items { font-size:12px; }
+  .flow-section h3 { font-size:14px; }
+
+  .funnel-items { flex-direction:column; gap:8px; }
+  .funnel-arrow { transform:rotate(90deg); }
+  .funnel-item { width:100%; }
+  .funnel-item span { font-size:12px; }
+
+  .problem-box { padding:16px; }
+  .problem-box h3 { font-size:16px; }
+  .problem-item { font-size:14px; }
+
+  .closing-quote .q2 { font-size:22px !important; }
+  .closing-body { font-size:16px !important; }
+  .closing-sub { font-size:13px; }
+  .closing-footer { font-size:10px; position:relative; bottom:auto; margin-top:24px; }
+
+  .nav { bottom:0; left:0; right:0; transform:none; width:100%; padding:10px 16px; gap:10px; background:rgba(15,32,39,0.85); backdrop-filter:blur(10px); justify-content:center; }
+  .nav button { padding:14px 0; font-size:15px; flex:1; max-width:160px; border-radius:10px; min-height:48px; -webkit-tap-highlight-color:transparent; }
+  .nav .slide-counter { color:rgba(255,255,255,0.6); font-size:13px; font-weight:500; display:flex; align-items:center; padding:0 8px; }
+  .hint { display:none; }
+  .progress { position:fixed; bottom:68px; }
+}
+
+/* ── Small Mobile ── */
+@media (max-width: 400px) {
+  .slide { padding:16px 12px 70px; }
+  .stat-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .stat-num { font-size:24px; }
+  .principle-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .monitor-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  h1 { font-size:24px !important; }
+  h2 { font-size:18px !important; }
+}
+
 /* ── Print ── */
 @media print {
-  .slide { position:relative; page-break-after:always; opacity:1; transform:none; height:100vh; }
-  .nav, .progress { display:none; }
+  .slide { position:relative; page-break-after:always; opacity:1; transform:none; height:100vh; display:flex !important; }
+  .nav, .progress, .hint { display:none; }
 }
 </style>
 </head>
@@ -276,7 +377,8 @@ h2 { font-size:clamp(30px, 3.5vw, 42px); font-weight:900; line-height:1.3; margi
     <h3>전 생애주기 AI 관리 흐름</h3>
     <div class="flow-row"><span class="flow-label">창업 전</span><span class="flow-items">AI 진단 → 위험 체크 → 교육 매칭 → 정책자금</span></div>
     <div class="flow-row"><span class="flow-label blue">창업 후</span><span class="flow-items">모니터링 → 위험 감지 → 근거 경고 → 대응 제공</span></div>
-    <div class="flow-row"><span class="flow-label orange">데이터 순환</span><span class="flow-items">사업자 결과 → 진단 정확도 향상 → 시스템 개선</span></div>
+    <div class="flow-row"><span class="flow-label orange">위기 시</span><span class="flow-items">폐업 연착륙 → 희망리턴패키지 연계 → 재창업 데이터 이어받기</span></div>
+    <div class="flow-row"><span class="flow-label" style="background:#1B3A5C;">데이터 순환</span><span class="flow-items">사업자 결과 → 진단 정확도 향상 → 시스템 개선</span></div>
   </div>
 </div>
 
@@ -464,7 +566,8 @@ h2 { font-size:clamp(30px, 3.5vw, 42px); font-weight:900; line-height:1.3; margi
       <div class="effect-header o">소상공인 체감</div>
       <div class="effect-item"><span class="effect-num accent">1</span><p>"망할까요?" →<br>"위험 요소 5개 중 3개 해당"</p></div>
       <div class="effect-item"><span class="effect-num accent">2</span><p>창업 후 AI가 지속 경고<br>+ 출처 명시</p></div>
-      <div class="effect-item"><span class="effect-num accent">3</span><p>정책자금 자동 매칭<br>66.9% 사각지대 해소</p></div>
+      <div class="effect-item"><span class="effect-num accent">3</span><p>정책자금·폐업지원금<br>자동 매칭 (사각지대 해소)</p></div>
+      <div class="effect-item"><span class="effect-num accent">4</span><p>폐업 시에도 연착륙 지원<br>→ 재창업 데이터 이어받기</p></div>
     </div>
     <div class="effect-card">
       <div class="effect-header t">정책 효과</div>
@@ -499,6 +602,7 @@ h2 { font-size:clamp(30px, 3.5vw, 42px); font-weight:900; line-height:1.3; margi
 <!-- Navigation -->
 <div class="nav">
   <button id="prevBtn" onclick="go(-1)">◀ 이전</button>
+  <span class="slide-counter" id="slideCounter">1 / 10</span>
   <button id="nextBtn" onclick="go(1)">다음 ▶</button>
 </div>
 <div class="progress" id="progress"></div>
@@ -508,6 +612,7 @@ h2 { font-size:clamp(30px, 3.5vw, 42px); font-weight:900; line-height:1.3; margi
 let cur = 1;
 const total = 10;
 const slides = document.querySelectorAll('.slide');
+const isMobile = () => window.innerWidth <= 768;
 
 function show(n) {
   cur = Math.max(1, Math.min(total, n));
@@ -518,6 +623,11 @@ function show(n) {
     else if (sn < cur) s.classList.add('prev');
   });
   document.getElementById('progress').style.width = ((cur / total) * 100) + '%';
+  // 모바일: 슬라이드 변경 시 스크롤 최상단
+  if (isMobile()) window.scrollTo({ top: 0, behavior: 'instant' });
+  // 슬라이드 카운터 업데이트
+  const counter = document.getElementById('slideCounter');
+  if (counter) counter.textContent = cur + ' / ' + total;
 }
 
 function go(d) { show(cur + d); }
@@ -531,9 +641,10 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// Click to advance (click right half = next, left half = prev)
+// Click to advance — 데스크톱에서만 작동
 document.addEventListener('click', e => {
-  if (e.target.closest('.nav')) return; // skip nav buttons
+  if (isMobile()) return; // 모바일은 스와이프로 이동
+  if (e.target.closest('.nav')) return;
   const x = e.clientX;
   const w = window.innerWidth;
   if (x > w * 0.3) go(1);
@@ -541,13 +652,20 @@ document.addEventListener('click', e => {
 });
 
 // Touch swipe support
-let touchX = 0;
-document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+let touchX = 0, touchY = 0;
+document.addEventListener('touchstart', e => {
+  touchX = e.touches[0].clientX;
+  touchY = e.touches[0].clientY;
+}, { passive: true });
 document.addEventListener('touchend', e => {
   if (e.target.closest('.nav')) return;
-  const diff = touchX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) go(diff > 0 ? 1 : -1);
-});
+  const dx = touchX - e.changedTouches[0].clientX;
+  const dy = touchY - e.changedTouches[0].clientY;
+  // 수평 스와이프만 (수직 스크롤과 구분)
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+    go(dx > 0 ? 1 : -1);
+  }
+}, { passive: true });
 
 show(1);
 </script>
